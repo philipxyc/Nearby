@@ -1,0 +1,108 @@
+/*
+* @Author: eastpiger
+* @Date:   2016-10-15 17:36:41
+* @Last Modified by:   eastpiger
+* @Last Modified time: 2016-10-15 21:44:19
+*/
+body {
+	background: url(./bg.jpg) fixed;
+	background-size:cover;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+#nameContainer {
+	margin: 0px;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	z-index: 2;
+}
+
+#messagesContainer {
+	margin: 0px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	overflow: auto;
+}
+
+#messages {
+	padding-bottom: 55px;
+}
+
+.message_box {
+	padding: 10px;
+}
+
+.username {
+	font-weight: bold;
+	margin-bottom: 10px;
+	color: #aaaaaa;
+}
+
+.content {
+	position: relative;
+	margin-left: 10px;
+	background: #3385ff;
+	padding: 5px 10px;
+	color: white;
+	border-radius: 20px;
+	display: inline-block;
+	line-height: 24px;
+}
+
+.content:before {
+  content:" ";
+  border-top: 10px solid #3385ff;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #3385ff;
+  position: absolute;
+  left: -0px;
+  top: 0px;
+  width: 0;
+  height: 0;
+}
+
+.choices {
+	margin: 0px -25px;
+	white-space:nowrap;
+	overflow: auto;
+	padding: 10px 25px;
+}
+
+.choices button {
+	min-width: 80px;
+	border-radius: 20px;
+	margin-left: 10px;
+	box-shadow: rgba(51, 133, 255, 0.5) 0px 0px 3px;
+	background: rgba(255, 255, 255, 0.6);
+    padding: 4px 12px;
+}
+
+.control {
+	padding: 10px;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	transition: all .3s;
+}
+
+
+.container.inactive .control {
+	bottom: -55px;
+}
+
+.control input,
+.control button {
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.7);
+}
