@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Socket.IO chat</title>
+		<title>Nearby 邻里 - 可能是最萌的强地理关系服务平台</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="./index.css">
@@ -9,8 +9,13 @@
 	<body>
 		<div class="container inactive">
 			<div id="nameContainer" class="row">
-
-
+				<div id="name"></div>
+				<div id="name_edit">
+					<input type="text" class="form-control" id="nameEdit" placeholder="Enter your name">
+				</div>
+				<div id="name_button">
+					<span class="glyphicon glyphicon-edit" onclick=onchangeEdit()></span>
+				</div>
 			</div>
 			<div id="messagesContainer" class="row">
 				<div id="messages" class="col-xs-12">
@@ -23,8 +28,7 @@
 						<div class="input-group">
 							<input type="text" class="form-control" id="content" autocomplete="off" />
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="submit">Go!</button>
-								<button class="btn btn-default" type="button" onclick="sendMsg('帅气的机器人', '天气热嘛？', id='weather111', choice=['是', '否', '否', '否', '否', '否', '否', '否', '否'])">Go!</button>
+								<button class="btn btn-default" type="submit">SEND</button>
 							</span>
 						</div>
 					</form>
@@ -40,67 +44,7 @@
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 		<script src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-		<script>
-			function getCookie(c_name) {
-				if (document.cookie.length>0) {
-					c_start=document.cookie.indexOf(c_name + "=")
-					if (c_start!=-1) {
-						c_start=c_start + c_name.length+1
-						c_end=document.cookie.indexOf(";",c_start)
-						if (c_end==-1) c_end=document.cookie.length
-						return unescape(document.cookie.substring(c_start,c_end))
-					}
-				}
-				return '可爱的小强'
-			}
-			function sendMsg(name, content, id = '', choice=[]) {
-				data = {
-					'name': name,
-					'content': content,
-					'choice': choice,
-					'id': id,
-					'GPS': []
-				};
-				socket.emit('chat message', data);
-			}
-			function onClickChoice(id, choice) {
-				$('#' + id).addClass('inactive');
-				$('#' + id + ' button').removeAttr('onclick');
-				$('#' + id + ' button').attr('disabled', true);
-				sendMsg(name, choice, id);
-			}
-			function init() {
-				socket.on('chat message', function(msg){
-					console.log(msg);
-					var t = '<div class="message_box">';
-					t += '<div class="username">' + msg.name + ':</div>';
-					t += '<div class="content">' + msg.content + '</div>';
-					if (msg.choice!=[]) {
-						t += '<div class="choices" id="' + msg.id + '">';
-						msg.choice.map(function(element, index) {
-							t += '<button class="btn btn-default" onclick="onClickChoice(\'' + msg.id + '\', \'' + element + '\')">' + element + '</button>';
-						})
-						t += '</div>';
-					}
-					t += '</div>';
-					var endSig = $('#messages').height() - $('#messagesContainer').height() + 55 < 0 || $("#messagesContainer").scrollTop() == $('#messages').height() - $('#messagesContainer').height() + 55;
-					$('#messages').append(t);
-	            	if (endSig) $("#messagesContainer").animate({"scrollTop": $('#messages').height() - $('#messagesContainer').height() + 55}, "slow");
-				});
-				$('#sendForm').submit(function(){
-					var content = $('#content').val();
-					sendMsg(name, content);
-					$('#content').val('');
-					return false;
-				});
-			}
-			var socket = io();
-			var name = getCookie(name);
-			if (name) {
-				$('body > div').removeClass('inactive');
-				init();
-			} else $('body').addClass('changeName');
-		</script>
+		<script src="./nearby.js"></script>
 
 	</body>
 </html>
