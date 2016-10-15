@@ -10,4 +10,6 @@ COPY . /nearby
 RUN cd /nearby \
   && npm install
 
+WORKDIR /nearby
+
 CMD [ "node", "/nearby/index.js" ]
