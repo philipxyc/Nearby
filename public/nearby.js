@@ -83,9 +83,9 @@ function onReceiveMsg(msg) {
 		t += '</div>';
 	}
 	t += '</div>';
-	var endSig = $('#messages').height() - $('#messagesContainer').height() + 110 < 0 || $("#messagesContainer").scrollTop() == $('#messages').height() - $('#messagesContainer').height() + 110;
+	var endSig = $('#messages').height() - $('#messagesContainer').height() + 110 < 0 || $("#messagesContainer").scrollTop() >= $('#messages').height() - 1.5 * $('#messagesContainer').height() + 110;
 	$('#messages').append(t);
-	if (endSig) $("#messagesContainer").animate({"scrollTop": $('#messages').height() - $('#messagesContainer').height() + 110}, "slow");
+	if (endSig) $("#messagesContainer").animate({"scrollTop": $('#messages').height() - $('#messagesContainer').height() + 110}, 100);
 }
 function onchangeEdit() {
 	if ($('#nameContainer').hasClass('edit')) {
