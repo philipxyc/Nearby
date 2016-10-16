@@ -71,7 +71,7 @@ function onReceiveMsg(msg) {
 	t += '<div class="username">';
 	if (msg.robot) t+= '<span class="label label-success">Robot</span> ';
 	t += msg.name + ':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-	if (dis <= 0.5) t += '500m内';
+	if (dis <= 0.2) t += '200m内';
 	else t += '约' + Math.floor(dis * 10) / 10 + 'km';
 	t += '</div>';
 	t += '<div class="content">' + msg.content + '</div>';
@@ -83,7 +83,7 @@ function onReceiveMsg(msg) {
 		t += '</div>';
 	}
 	t += '</div>';
-	var endSig = $('#messages').height() - $('#messagesContainer').height() + 110 < 0 || $("#messagesContainer").scrollTop() >= $('#messages').height() - 1.5 * $('#messagesContainer').height() + 110;
+	var endSig = $('#messages').height() - $('#messagesContainer').height() + 110 < 0 || $("#messagesContainer").scrollTop() >= $('#messages').height() - 2 * $('#messagesContainer').height() + 110;
 	$('#messages').append(t);
 	if (endSig) $("#messagesContainer").animate({"scrollTop": $('#messages').height() - $('#messagesContainer').height() + 110}, 100);
 }
@@ -158,6 +158,7 @@ init();
 $('body > div').removeClass('inactive');
 
 // GPS data saver
+// 木办法会场GPS信号太差了只能先初始化一次
 var GPS = {
 	'latitude': 31.1748534,
 	'longitude': 121.4024798,
