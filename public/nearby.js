@@ -71,8 +71,8 @@ function onReceiveMsg(msg) {
 	t += '<div class="username">';
 	if (msg.robot) t+= '<span class="label label-success">Robot</span> ';
 	t += msg.name + ':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-	if (dis <= 1) t += '1km内';
-	else t += '约' + Math.floor(dis) + 'km';
+	if (dis <= 0.5) t += '500m内';
+	else t += '约' + Math.floor(dis * 10) / 10 + 'km';
 	t += '</div>';
 	t += '<div class="content">' + msg.content + '</div>';
 	if (msg.choice!=[]) {
