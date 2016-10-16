@@ -111,7 +111,7 @@ function init() {
 	});
 	t = getCookie('name');
 	var first_flag = false;
-	if (t == undefined) {
+	if (t == undefined || t == '') {
 		name = getName();
 		first_flag = true;
 		setName(name);
@@ -127,7 +127,7 @@ function init() {
 		});
 		onReceiveMsg({
 			'name': 'Nearby Assistant',
-			'content': 'Nearby是一个基于地理位置与物联网络的平台，您可以轻而易举地与方圆500米范围内的朋友们自由交流，擦肩而过皆为缘，希望您能够找到更多的人生乐趣所在！',
+			'content': 'Nearby是一个基于地理位置与物联网络的平台，您可以轻而易举地与方圆2km范围内的朋友们自由交流，擦肩而过皆为缘，希望您能够找到更多的人生乐趣所在！',
 			'choice': [],
 			'id': '',
 			'GPS': GPS,
