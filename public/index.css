@@ -2,7 +2,7 @@
 * @Author: eastpiger
 * @Date:   2016-10-15 17:36:41
 * @Last Modified by:   eastpiger
-* @Last Modified time: 2016-10-16 04:47:58
+* @Last Modified time: 2016-10-16 04:52:20
 */
 body {
 	position: absolute;
@@ -203,11 +203,12 @@ body {
 		top: 0; left: 0; bottom: 0; right: 50%;
 	}
 	.hiddentitle {
+		text-align: left;
 		display: block;
 		margin: auto;
 		position: absolute;
 		top: 20%; left: 60%;
-		transform: scale(1.3);
+		transform: scale(1.6);
 	}
 }
 
@@ -221,7 +222,7 @@ body {
 		margin: auto;
 		position: absolute;
 		top: 20%; left: 60%;
-		transform: scale(1.5);
+		transform: scale(2);
 	}
 }
 
