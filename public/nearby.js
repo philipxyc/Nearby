@@ -45,7 +45,7 @@ function setCookie(cname, cvalue, exdays) {
 	var expires = "expires="+d.toUTCString();
 	document.cookie = cname + "=" + cvalue + "; " + expires;
 }
-function sendMsg(name, content, id = '', choice=[], rebot) {
+function sendMsg(name, content, id, choice) {
 	data = {
 		'name': name,
 		'content': content,
@@ -60,7 +60,7 @@ function onClickChoice(id, choice) {
 	$('.' + id).addClass('inactive');
 	$('.' + id + ' button').removeAttr('onclick');
 	$('.' + id + ' button').attr('disabled', true);
-	sendMsg(name, choice, id);
+	sendMsg(name, choice, id, []);
 }
 function onReceiveMsg(msg) {
 	msg.name = removeHTMLTag(msg.name);
@@ -105,7 +105,7 @@ function init() {
 	socket.on('chat message', onReceiveMsg);
 	$('#sendForm').submit(function(){
 		var content = $('#content').val();
-		if (content) sendMsg(name, content);
+		if (content) sendMsg(name, content, '', []);
 		$('#content').val('');
 		return false;
 	});
