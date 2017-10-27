@@ -16,9 +16,11 @@ io.on('connection', function(socket){
   });
   socket.on('Alvolus', function(msg){
     console.log('turn to '+msg+' plz');
+    io.emit('Alvolus', msg);
   });
   socket.on('reset', function(){
     console.log('reset');
+    io.emit('Alvolus');
   });
   socket.on('chat message', function(msg){
     console.log('message: ' + msg);
