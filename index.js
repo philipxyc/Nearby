@@ -14,6 +14,12 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
+  socket.on('Alvolus', function(msg){
+    console.log('turn to '+msg+' plz');
+  });
+  socket.on('reset', function(){
+    console.log('reset');
+  });
   socket.on('chat message', function(msg){
     console.log('message: ' + msg);
     io.emit('chat message', msg);
