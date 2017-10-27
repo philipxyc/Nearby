@@ -103,6 +103,8 @@ function setName(c_name) {
 }
 function init() {
 	socket.on('chat message', onReceiveMsg);
+	socket.on('Alvolus', onReceiveMsg);
+	socket.on('reset', onReceiveMsg);
 	$('#sendForm').submit(function(){
 		var content = $('#content').val();
 		if (content) sendMsg(name, content, '', []);
