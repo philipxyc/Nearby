@@ -20,7 +20,7 @@ io.on('connection', function(socket){
   });
   socket.on('reset', function(){
     console.log('reset');
-    io.emit('Alvolus');
+    io.emit('reset');
   });
   socket.on('chat message', function(msg){
     console.log('message: ' + msg);
